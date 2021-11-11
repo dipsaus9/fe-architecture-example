@@ -4,9 +4,6 @@ module.exports = {
   transformIgnorePatterns: ["./node_modules/", "./dist/"],
   passWithNoTests: true,
   testEnvironment: "jsdom",
-  moduleNameMapper: {
-    "\\.css$": "identity-obj-proxy",
-  },
   transform: {
     "^.+\\.(js|ts|tsx)$": "babel-jest",
   },

@@ -10,6 +10,6 @@ module.exports = {
     "@babel/preset-typescript",
   ],
 
-  plugins: ["babel-plugin-styled-components", "babel-plugin-inline-react-svg"],
+  plugins: ["babel-plugin-inline-react-svg"],
   ignore: ["**/dist/", "**/node_modules/"],
 }
