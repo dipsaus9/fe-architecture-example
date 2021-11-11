@@ -4,6 +4,4 @@ export interface IPerformRequestParameters {
   parameters?: Record<string, string | number>
 }
 
-export interface IService<T> {
-  performRequest: (parameters: IPerformRequestParameters) => Promise<T>
-}
+export type IService<T> = (parameters: IPerformRequestParameters) => Promise<T>

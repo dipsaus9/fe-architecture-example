@@ -1,12 +1,21 @@
 import { IProductOverviewViewModel } from "./IProductOverviewViewModel"
 
-import { IProductOverview } from "@/features/productOverview/data/models/IProductOverview"
+import { IProduct } from "@/features/productOverview/data"
 
-export function createProductOverviewViewModel(
-  products: IProductOverview[]
-): IProductOverviewViewModel[] {
-  return products.map((product) => ({
-    ...product,
-    price: `${product.price.currency} ${product.price.value}`,
-  }))
+interface ICreateProductOverviewViewModelProps {
+  products: IProduct[]
+  t: (key: string) => string
+}
+
+export function createProductOverviewViewModel({
+  products,
+  t,
+}: ICreateProductOverviewViewModelProps): IProductOverviewViewModel {
+  return {
+    title: t("First test title"),
+    products: products.map((product) => ({
+      ...product,
+      price: `${product.price.currency} ${product.price.value}`,
+    })),
+  }
 }

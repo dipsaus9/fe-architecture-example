@@ -3,14 +3,15 @@ import { IProductOverviewViewModel } from "../store/view-models/IProductOverview
 import { ProductCard } from "./ProductCard"
 
 interface IProductOverviewProps {
-  products: IProductOverviewViewModel[]
+  viewModel: IProductOverviewViewModel
 }
-export function ProductOverview({ products }: IProductOverviewProps) {
+export function ProductOverview({ viewModel }: IProductOverviewProps) {
   return (
-    <>
-      {products.map((product) => (
+    <section>
+      <h2>{viewModel.title}</h2>
+      {viewModel.products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
-    </>
+    </section>
   )
 }

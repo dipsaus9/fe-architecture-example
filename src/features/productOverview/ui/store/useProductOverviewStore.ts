@@ -1,4 +1,4 @@
-import { getProducts, IProductOverview } from "../../data"
+import { getProducts, IProduct } from "../../data"
 
 import { createProductOverviewViewModel } from "./view-models/createProductOverviewViewModel"
 import { IProductOverviewViewModel } from "./view-models/IProductOverviewViewModel"
@@ -6,8 +6,17 @@ import { IProductOverviewViewModel } from "./view-models/IProductOverviewViewMod
 import { useStore } from "@/features/shared/data/ui/useStore"
 
 export function useProductOverviewStore() {
-  return useStore<IProductOverview[], IProductOverviewViewModel[]>(
+  const { t } = useTranslation()
+
+  return useStore<IProduct[], IProductOverviewViewModel>(
     getProducts,
-    createProductOverviewViewModel
+    (products: IProduct[]) => createProductOverviewViewModel({ t, products })
   )
+}
+
+// Temporary example
+function useTranslation() {
+  return {
+    t: (key: string) => key,
+  }
 }

@@ -12,5 +12,5 @@ export function MainProductOverview() {
     return null
   }
 
-  return <ProductOverview products={data} />
+  return <ProductOverview viewModel={data} />
 }

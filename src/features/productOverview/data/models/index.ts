@@ -1,1 +1,1 @@
-export * from "./IProductOverview"
+export * from "./IProduct"

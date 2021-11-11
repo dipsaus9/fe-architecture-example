@@ -1,4 +1,4 @@
-export interface IProductOverviewResponse {
+export interface IProductResponse {
   id: number
   title: string
   price: number
@@ -11,7 +11,7 @@ export interface IProductOverviewResponse {
   }
 }
 
-export interface IProductOverview {
+export interface IProduct {
   id: number
   title: string
   price: {

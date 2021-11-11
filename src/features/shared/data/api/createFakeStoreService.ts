@@ -14,5 +14,5 @@ export const createFakeStoreService = <T>(
       parameters,
     })
 
-  return Object.freeze({ performRequest })
+  return performRequest
 }
