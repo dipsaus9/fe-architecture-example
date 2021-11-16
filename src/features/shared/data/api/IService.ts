@@ -1,7 +1,17 @@
-export interface IPerformRequestParameters {
-  method?: "GET" | "POST"
+export interface IPerformRequestGetParameters {
   endPoint: string
   parameters?: Record<string, string | number>
 }
 
-export type IService<T> = (parameters: IPerformRequestParameters) => Promise<T>
+export interface IPerformRequestPostParameters {
+  endPoint: string
+  body: {
+    [key: string]: any
+  }
+}
+
+export type IService = {
+  get: <T>(parameters: IPerformRequestGetParameters) => Promise<T>
+  post: <T>(parameters: IPerformRequestPostParameters) => Promise<T>
+  cancel: () => void
+}

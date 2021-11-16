@@ -1,4 +1,4 @@
-import { IProductOverviewViewModel } from "../store/view-models/IProductOverviewViewModel"
+import { IProductOverviewViewModel } from "../store/view-models/IProductOverviewViewModel.1"
 
 import { ProductCard } from "./ProductCard"
 

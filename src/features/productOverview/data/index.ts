@@ -1,7 +1,7 @@
-import { createGetProducts } from "./createGetProducts"
+import { createProductsRepository } from "./createProductsRepository"
 
 import { createFakeStoreService } from "@/features/shared/data/api"
 
 export * from "./models"
 
-export const getProducts = createGetProducts(createFakeStoreService())
+export const getProducts = createProductsRepository(createFakeStoreService())

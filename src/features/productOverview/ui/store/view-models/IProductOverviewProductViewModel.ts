@@ -1,5 +1,6 @@
-export interface IProductViewModel {
+export interface IProductOverviewProductViewModel {
   id: number
+  url: string
   title: string
   description: string
   price: string
@@ -9,9 +10,4 @@ export interface IProductViewModel {
     rate: number
     count: number
   }
-}
-
-export interface IProductOverviewViewModel {
-  title: string
-  products: IProductViewModel[]
 }

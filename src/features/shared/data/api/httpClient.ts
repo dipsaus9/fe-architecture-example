@@ -1,32 +1,37 @@
 import axios from "axios"
 
-import { log } from "@/helpers/log"
+export function createHttpClient(baseURL: string) {
+  const controller = new AbortController()
+  const { signal } = controller
 
-export interface IRequestConfig {
-  method?: "GET" | "POST"
-  parameters?: Record<string, string | number>
-}
-
-export const createHttpClient =
-  () =>
-  <T>(
-    basePath: string,
-    endPoint: string,
-    requestConfig: IRequestConfig = {}
-  ): Promise<T> => {
-    const promise = axios({
-      method: requestConfig.method || "GET",
-      baseURL: basePath,
-      url: endPoint,
-      params: requestConfig.parameters,
-      validateStatus: () => true,
-    }).then((response) => response.data)
-
-    promise.catch((error) => {
-      log(error)
-    })
-
-    return promise
+  return {
+    get<T>(endPoint: string, parameters?: Record<string, string | number>) {
+      return axios
+        .get<T>(endPoint, {
+          baseURL,
+          params: parameters,
+          signal,
+        })
+        .then((response) => response.data)
+    },
+    post<T>(
+      endPoint: string,
+      body: {
+        [key: string]: any
+      }
+    ) {
+      return axios
+        .post<T>(endPoint, {
+          baseURL,
+          data: body,
+          signal,
+        })
+        .then((response) => response.data)
+    },
+    cancel() {
+      controller.abort()
+    },
   }
+}
 
 export type IHttpClient = ReturnType<typeof createHttpClient>

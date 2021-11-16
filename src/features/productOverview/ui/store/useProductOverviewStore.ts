@@ -1,22 +1,27 @@
-import { getProducts, IProduct } from "../../data"
+import { useQuery } from "react-query"
+
+import { getProducts } from "../../data"
 
 import { createProductOverviewViewModel } from "./view-models/createProductOverviewViewModel"
-import { IProductOverviewViewModel } from "./view-models/IProductOverviewViewModel"
 
-import { useStore } from "@/features/shared/ui/useStore"
+import { useTranslation } from "@/features/shared/ui/hooks/useTranslation"
+
+const QUERY_KEY = "products"
 
 export function useProductOverviewStore() {
   const { t } = useTranslation()
 
-  return useStore<IProduct[], IProductOverviewViewModel>(
-    getProducts,
-    (products: IProduct[]) => createProductOverviewViewModel({ t, products })
-  )
-}
+  const { isLoading, data } = useQuery(QUERY_KEY, () => getProducts())
 
-// Temporary example
-function useTranslation() {
+  const viewModel = data
+    ? createProductOverviewViewModel({
+        products: data,
+        t,
+      })
+    : null
+
   return {
-    t: (key: string) => key,
+    isLoading,
+    data: viewModel,
   }
 }

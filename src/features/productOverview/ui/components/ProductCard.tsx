@@ -1,7 +1,9 @@
-import { IProductViewModel } from "../store/view-models/IProductOverviewViewModel"
+import { Link } from "react-router-dom"
+
+import { IProductOverviewProductViewModel } from "../store/view-models/IProductOverviewProductViewModel"
 
 interface IProductCard {
-  product: IProductViewModel
+  product: IProductOverviewProductViewModel
 }
 
 export function ProductCard({ product }: IProductCard) {
@@ -10,6 +12,7 @@ export function ProductCard({ product }: IProductCard) {
       <h2>{product.title}</h2>
       <span>{product.price}</span>
       <p>{product.description}</p>
+      <Link to={product.url}>Naar product pagina</Link>
     </div>
   )
 }
