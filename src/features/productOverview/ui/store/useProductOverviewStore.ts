@@ -3,7 +3,7 @@ import { getProducts, IProduct } from "../../data"
 import { createProductOverviewViewModel } from "./view-models/createProductOverviewViewModel"
 import { IProductOverviewViewModel } from "./view-models/IProductOverviewViewModel"
 
-import { useStore } from "@/features/shared/data/ui/useStore"
+import { useStore } from "@/features/shared/ui/useStore"
 
 export function useProductOverviewStore() {
   const { t } = useTranslation()
