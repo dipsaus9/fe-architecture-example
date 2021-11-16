@@ -7,6 +7,7 @@ export function createProductOverviewProductViewModel(
 ): IProductOverviewProductViewModel {
   return {
     ...product,
+    id: String(product),
     url: `/product/${product.id}`,
     price: `${product.price.currency} ${product.price.value}`,
   }

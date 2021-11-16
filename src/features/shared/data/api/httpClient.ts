@@ -21,9 +21,8 @@ export function createHttpClient(baseURL: string) {
       }
     ) {
       return axios
-        .post<T>(endPoint, {
+        .post<T>(endPoint, body, {
           baseURL,
-          data: body,
           signal,
         })
         .then((response) => response.data)

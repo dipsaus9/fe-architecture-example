@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom"
 
+import { MainProductPage } from "@/features/product/ui/MainProductPage"
+
 export function ProductPage() {
   const { id } = useParams()
 
@@ -7,5 +9,5 @@ export function ProductPage() {
     return null
   }
 
-  return <h1>Hi {id}</h1>
+  return <MainProductPage id={id} />
 }

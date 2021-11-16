@@ -1,4 +1,4 @@
-export interface IProductOverviewProductViewModel {
+export interface IProductViewModel {
   id: string
   url: string
   title: string
