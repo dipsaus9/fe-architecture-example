@@ -13,8 +13,6 @@ export const fakeStoreService = {
     return fakeStoreClient.get<IProductResponse>(`/products/${id}`)
   },
   addToCart(product: IAddProductToCart) {
-    return fakeStoreClient.post<IProductResponse>("/carts", {
-      body: product,
-    })
+    return fakeStoreClient.post<IProductResponse>("/carts", product)
   },
 }

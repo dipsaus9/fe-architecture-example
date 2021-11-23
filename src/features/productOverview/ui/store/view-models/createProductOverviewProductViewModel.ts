@@ -1,14 +1,21 @@
-import { IProductOverviewProductViewModel } from "./IProductOverviewProductViewModel"
+import type { IProductOverviewProductViewModel } from "./IProductOverviewProductViewModel"
 
-import { IProduct } from "@/features/productOverview/data"
+import type { IProduct } from "@/features/productOverview/data"
 
-export function createProductOverviewProductViewModel(
+interface ICreateProductOverviewProductViewModelProps {
   product: IProduct
-): IProductOverviewProductViewModel {
+  t: (key: string) => string
+}
+
+export function createProductOverviewProductViewModel({
+  product,
+  t,
+}: ICreateProductOverviewProductViewModelProps): IProductOverviewProductViewModel {
   return {
     ...product,
-    id: String(product),
-    url: `/product/${product.id}`,
+    id: String(product.id),
+    link: `/product/${product.id}`,
+    linkTitle: t("Naar product pagina"),
     price: `${product.price.currency} ${product.price.value}`,
   }
 }

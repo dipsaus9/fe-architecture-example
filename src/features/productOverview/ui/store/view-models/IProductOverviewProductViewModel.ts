@@ -1,6 +1,7 @@
 export interface IProductOverviewProductViewModel {
   id: string
-  url: string
+  link: string
+  linkTitle: string
   title: string
   description: string
   price: string

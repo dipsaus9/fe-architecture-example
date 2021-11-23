@@ -1,29 +1,40 @@
-import axios from "axios"
+import axios, { AxiosRequestConfig } from "axios"
+
+import { withCancelToken } from "./withCancelToken"
 
 export function createHttpClient(baseURL: string) {
-  const controller = new AbortController()
-  const { signal } = controller
-
   return {
-    get<T>(endPoint: string, parameters?: Record<string, string | number>) {
-      return axios
+    get<T, D = any>(endPoint: string, config?: AxiosRequestConfig<D>) {
+      const controller = new AbortController()
+      const { signal } = controller
+
+      const promise = axios
         .get<T>(endPoint, {
+          ...config,
           baseURL,
-          params: parameters,
           signal,
         })
         .then((response) => response.data)
+
+      return withCancelToken(promise, controller.abort)
     },
-    post<T>(endPoint: string, body: Record<string, any>) {
-      return axios
+    post<T, D = any>(
+      endPoint: string,
+      body: D,
+      config?: AxiosRequestConfig<D>
+    ) {
+      const controller = new AbortController()
+      const { signal } = controller
+
+      const promise = axios
         .post<T>(endPoint, body, {
+          ...config,
           baseURL,
           signal,
         })
         .then((response) => response.data)
-    },
-    cancel() {
-      controller.abort()
+
+      return withCancelToken(promise, controller.abort)
     },
   }
 }

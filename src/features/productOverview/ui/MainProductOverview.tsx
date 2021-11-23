@@ -2,15 +2,15 @@ import { ProductOverview } from "./components/ProductOverview"
 import { useProductOverviewStore } from "./store/useProductOverviewStore"
 
 export function MainProductOverview() {
-  const { isLoading, data } = useProductOverviewStore()
+  const productOverviewStore = useProductOverviewStore()
 
-  if (isLoading) {
-    return <h1>Loading...</h1>
+  if (productOverviewStore.isLoading) {
+    return <h1>{productOverviewStore.loadingText}</h1>
   }
 
-  if (!data) {
+  if (!productOverviewStore.viewModel) {
     return null
   }
 
-  return <ProductOverview viewModel={data} />
+  return <ProductOverview viewModel={productOverviewStore.viewModel} />
 }

@@ -11,17 +11,11 @@ const QUERY_KEY = "products"
 export function useProductOverviewStore() {
   const { t } = useTranslation()
 
-  const { isLoading, data } = useQuery(QUERY_KEY, () => getProducts())
+  const { isLoading, data } = useQuery(QUERY_KEY, getProducts)
 
-  const viewModel = data
-    ? createProductOverviewViewModel({
-        products: data,
-        t,
-      })
-    : null
-
-  return {
+  return createProductOverviewViewModel({
+    products: data,
     isLoading,
-    data: viewModel,
-  }
+    t,
+  })
 }

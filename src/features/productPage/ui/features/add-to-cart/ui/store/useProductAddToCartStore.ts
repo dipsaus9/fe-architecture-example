@@ -10,15 +10,11 @@ export function useProductAddToCartStore(productId: string) {
   const { t } = useTranslation()
   const [showSuccess, setShowSuccess] = useState(false)
 
-  const viewModel = createAddToCartViewModel({
+  return createAddToCartViewModel({
     t,
     productId,
     addProductToCard,
     setShowSuccess,
     showSuccess,
   })
-
-  return {
-    data: viewModel,
-  }
 }

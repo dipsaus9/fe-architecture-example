@@ -1,4 +1,4 @@
-import { mapProductResponse } from "@/features/product/data/mappers/mapProductResponse"
+import { mapProductResponse } from "@/features/productPage/data/mappers/mapProductResponse"
 import { fakeStoreService } from "@/features/shared/data/FakeStore"
 
 export function addProductToCard(id: string) {

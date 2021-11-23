@@ -4,6 +4,8 @@ import { getProductById } from "../../data"
 
 import { createProductViewModel } from "./view-models/createProductViewModel"
 
+import { useTranslation } from "@/features/shared/ui/hooks/useTranslation"
+
 const QUERY_KEY = "product"
 
 export function useProductPageStore(productId: string) {
@@ -11,10 +13,7 @@ export function useProductPageStore(productId: string) {
     getProductById(productId)
   )
 
-  const viewModel = data ? createProductViewModel(data) : null
+  const { t } = useTranslation()
 
-  return {
-    isLoading,
-    data: viewModel,
-  }
+  return createProductViewModel({ product: data, isLoading, t })
 }
