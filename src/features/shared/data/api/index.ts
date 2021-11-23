@@ -1,1 +1,1 @@
-export * from "../FakeStore"
+export * from "../services/fake-store"

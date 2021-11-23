@@ -1,6 +1,6 @@
 import type { IProduct } from "../models/IProduct"
 
-import type { IProductResponse } from "@/features/shared/data/FakeStore"
+import type { IProductResponse } from "@/features/shared/data/services/fake-store"
 
 export function mapProductsResponse(response: IProductResponse[]): IProduct[] {
   return response.map((item) => ({

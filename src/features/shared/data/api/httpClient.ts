@@ -41,6 +41,36 @@ export function createHttpClient(
 
       return withCancelToken(promise, controller.abort)
     },
+    put<T, D = any>(endPoint: string, body: D, config?: AxiosRequestConfig<D>) {
+      const controller = new AbortController()
+      const { signal } = controller
+
+      const promise = axios
+        .put<T>(endPoint, body, {
+          ...baseConfig,
+          ...config,
+          baseURL,
+          signal,
+        })
+        .then((response) => response.data)
+
+      return withCancelToken(promise, controller.abort)
+    },
+    delete<T, D = any>(endPoint: string, config?: AxiosRequestConfig<D>) {
+      const controller = new AbortController()
+      const { signal } = controller
+
+      const promise = axios
+        .delete<T>(endPoint, {
+          ...baseConfig,
+          ...config,
+          baseURL,
+          signal,
+        })
+        .then((response) => response.data)
+
+      return withCancelToken(promise, controller.abort)
+    },
   }
 }
 

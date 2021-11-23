@@ -1,4 +1,4 @@
-import { createHttpClient } from "../api/httpClient"
+import { createHttpClient } from "../../api/httpClient"
 
 import type { IAddProductToCart } from "./models/IAddProductToCart"
 import type { IProductResponse } from "./models/IProductResponse"
