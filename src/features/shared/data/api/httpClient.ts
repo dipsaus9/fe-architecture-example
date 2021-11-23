@@ -2,7 +2,10 @@ import axios, { AxiosRequestConfig } from "axios"
 
 import { withCancelToken } from "./withCancelToken"
 
-export function createHttpClient(baseURL: string) {
+export function createHttpClient(
+  baseURL: string,
+  baseConfig?: AxiosRequestConfig
+) {
   return {
     get<T, D = any>(endPoint: string, config?: AxiosRequestConfig<D>) {
       const controller = new AbortController()
@@ -10,6 +13,7 @@ export function createHttpClient(baseURL: string) {
 
       const promise = axios
         .get<T>(endPoint, {
+          ...baseConfig,
           ...config,
           baseURL,
           signal,
@@ -28,6 +32,7 @@ export function createHttpClient(baseURL: string) {
 
       const promise = axios
         .post<T>(endPoint, body, {
+          ...baseConfig,
           ...config,
           baseURL,
           signal,
