@@ -1,5 +1,3 @@
-import { createProductRepository } from "./createProductRepository"
+export { getProductById } from "./getProductById"
 
 export * from "./models"
-
-export const getProductById = createProductRepository()

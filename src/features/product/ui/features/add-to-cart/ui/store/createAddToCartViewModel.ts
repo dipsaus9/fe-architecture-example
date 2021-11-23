@@ -1,12 +1,11 @@
 import { IProductAddToCartViewModel } from "./IProductAddToCartViewModel"
 
 import type { IProduct } from "@/features/product/data/models"
-import type { ICancellablePromise } from "@/features/shared/data/api/withCancelToken"
 
 interface ICreateAddToCartViewModelProps {
   t: (key: string) => string
   productId: string
-  addProductToCard: (id: string) => ICancellablePromise<IProduct>
+  addProductToCard: (id: string) => Promise<IProduct>
   showSuccess: boolean
   setShowSuccess: (value: boolean) => void
 }
