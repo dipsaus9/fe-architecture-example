@@ -1,6 +1,8 @@
-import { IProduct, IProductResponse } from "../models/IProduct"
+import type { IProduct } from "../models/IProduct"
 
-export function mapProductsResponse(response: IProductResponse): IProduct {
+import type { IProductResponse } from "@/features/shared/data/api/FakeStore"
+
+export function mapProductResponse(response: IProductResponse): IProduct {
   return {
     ...response,
     price: {

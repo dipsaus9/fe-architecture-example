@@ -1,4 +1,6 @@
-import { ICancellablePromise } from "./ICancellablePromise"
+export interface ICancellablePromise<T> extends Promise<T> {
+  cancel: () => void
+}
 
 export function withCancelToken<T>(
   request: Promise<T>,

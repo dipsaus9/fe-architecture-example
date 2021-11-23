@@ -1,10 +1,7 @@
-export interface IProduct {
+export interface IProductResponse {
   id: number
   title: string
-  price: {
-    currency: string
-    value: number
-  }
+  price: number
   description: string
   category: string
   image: string

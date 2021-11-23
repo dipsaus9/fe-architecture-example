@@ -1,1 +1,1 @@
-export { createFakeStoreService } from "./createFakeStoreService"
+export * from "./FakeStore"

@@ -1,7 +1,7 @@
 import { IProductAddToCartViewModel } from "./IProductAddToCartViewModel"
 
-import { IProduct } from "@/features/product/data/models"
-import { ICancellablePromise } from "@/features/shared/data/api/ICancellablePromise"
+import type { IProduct } from "@/features/product/data/models"
+import type { ICancellablePromise } from "@/features/shared/data/api/withCancelToken"
 
 interface ICreateAddToCartViewModelProps {
   t: (key: string) => string
