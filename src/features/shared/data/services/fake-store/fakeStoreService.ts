@@ -1,7 +1,6 @@
-import { createHttpClient } from "../../api/httpClient"
+import { createHttpClient } from "../../createHttpClient"
 
-import type { IAddProductToCart } from "./models/IAddProductToCart"
-import type { IProductResponse } from "./models/IProductResponse"
+import type { IProductResponse } from "./responses/IProductResponse"
 
 const fakeStoreClient = createHttpClient("https://fakestoreapi.com")
 
@@ -11,8 +10,5 @@ export const fakeStoreService = {
   },
   getProduct(id: string) {
     return fakeStoreClient.get<IProductResponse>(`/products/${id}`)
-  },
-  addToCart(product: IAddProductToCart) {
-    return fakeStoreClient.post<IProductResponse>("/carts", product)
   },
 }

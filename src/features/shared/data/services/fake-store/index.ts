@@ -1,2 +1,2 @@
 export * from "./fakeStoreService"
-export * from "./models"
+export * from "./responses"
