@@ -5,5 +5,10 @@ interface ICartProductProps {
 }
 
 export function CartProduct({ viewModel }: ICartProductProps) {
-  return <h3>{viewModel.title}</h3>
+  return (
+    <>
+      <h3>{viewModel.title}</h3>
+      <span>{viewModel.quantity}</span>
+    </>
+  )
 }

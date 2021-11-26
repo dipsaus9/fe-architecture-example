@@ -1,5 +1,5 @@
 export interface IAddProductToCartRequest {
-  id: string
+  id: number
   title: string
   price: number
   description: string
@@ -9,5 +9,4 @@ export interface IAddProductToCartRequest {
     rate: number
     count: number
   }
-  quantity: number
 }

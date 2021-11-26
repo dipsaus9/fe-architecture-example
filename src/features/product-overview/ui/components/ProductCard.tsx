@@ -3,6 +3,8 @@ import styled from "styled-components"
 
 import type { IProductOverviewProductViewModel } from "../store/view-models/IProductOverviewProductViewModel"
 
+import { MainAddToCart } from "@/features/add-to-cart/ui/MainAddToCart"
+
 interface IProductCard {
   product: IProductOverviewProductViewModel
 }
@@ -14,6 +16,7 @@ export function ProductCard({ product }: IProductCard) {
       <span>{product.price}</span>
       <p>{product.description}</p>
       <Link to={product.link}>{product.linkTitle}</Link>
+      <MainAddToCart productId={product.id} />
     </StyledProductCard>
   )
 }
